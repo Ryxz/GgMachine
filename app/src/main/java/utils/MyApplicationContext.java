@@ -193,66 +193,66 @@ public class MyApplicationContext extends Application {
             }
         });
     }
-    /**
-     * 失效
-     * 获取广告模板的ID
-     * @param key
-     * @param value
-     * @param dAdvertId
-     */
-    public  void getDeviceId(final String key, final String value, final String dAdvertId) {
-        Map<String, Object> map = new HashMap<>();
-        map.put(key, value);
+//    /**
+//     * 失效
+//     * 获取广告模板的ID
+//     * @param key
+//     * @param value
+//     * @param dAdvertId
+//     */
+//    public  void getDeviceId(final String key, final String value, final String dAdvertId) {
+//        Map<String, Object> map = new HashMap<>();
+//        map.put(key, value);
+//
+//        //请求模板id
+//        ServerRequestUtil.requestHttp(myContext, ServerUrl.getModeIdUrl, map, "获取中", new ServerResultListener() {
+//            @Override
+//            public void onSuccess(String json, String msg) {
+//                getGgInfo(key, value, dAdvertId, json);
+////                selectMode(json);
+//                L.e("模板id:", json);
+//            }
+//
+//            @Override
+//            public void onFailure(String msg) {
+//                L.e("error:", msg);
+//            }
+//        });
+//
+//    }
 
-        //请求模板id
-        ServerRequestUtil.requestHttp(myContext, ServerUrl.getModeIdUrl, map, "获取中", new ServerResultListener() {
-            @Override
-            public void onSuccess(String json, String msg) {
-                getGgInfo(key, value, dAdvertId, json);
-//                selectMode(json);
-                L.e("模板id:", json);
-            }
+//    /**失效
+//     * 获取广告信息 json
+//     * @param key
+//     * @param value
+//     * @param dAdvertId
+//     * @param json
+//     */
+//    public  void getGgInfo(String key, String value, String dAdvertId, String json) {
+//        Map<String, Object> map = new HashMap<>();
+//        map.put(key, value);
+//        map.put(dAdvertId, json);
+//        //请求广告信息
+//        ServerRequestUtil.requestHttp(MyApplicationContext.getInstance(), ServerUrl.getGgInfoUrl, map, "获取中", new ServerResultListener() {
+//
+//            @Override
+//            public void onSuccess(String json, String msg) {
+//                L.e("广告信息:", json);
+//                if (ggInfoBean == null) {
+//                    ggInfoBean = new GgInfoBean();
+//                    //将服务器返回的Json转换为GgInfoBean实体类
+//                    ggInfoBean = JsonUtil.parseJsonToBean(json, GgInfoBean.class);
+//                    MyApplicationContext.getInstance().saveGgInfoBean(ggInfoBean);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(String msg) {
+//                L.e("error:",msg);
+//            }
+//
+//        });
 
-            @Override
-            public void onFailure(String msg) {
-                L.e("error:", msg);
-            }
-        });
-
-    }
-
-    /**失效
-     * 获取广告信息 json
-     * @param key
-     * @param value
-     * @param dAdvertId
-     * @param json
-     */
-    public  void getGgInfo(String key, String value, String dAdvertId, String json) {
-        Map<String, Object> map = new HashMap<>();
-        map.put(key, value);
-        map.put(dAdvertId, json);
-        //请求广告信息
-        ServerRequestUtil.requestHttp(MyApplicationContext.getInstance(), ServerUrl.getGgInfoUrl, map, "获取中", new ServerResultListener() {
-
-            @Override
-            public void onSuccess(String json, String msg) {
-                L.e("广告信息:", json);
-                if (ggInfoBean == null) {
-                    ggInfoBean = new GgInfoBean();
-                    //将服务器返回的Json转换为GgInfoBean实体类
-                    ggInfoBean = JsonUtil.parseJsonToBean(json, GgInfoBean.class);
-                    MyApplicationContext.getInstance().saveGgInfoBean(ggInfoBean);
-                }
-
-            }
-
-            @Override
-            public void onFailure(String msg) {
-                L.e("error:",msg);
-            }
-
-        });
-
-    }
+//    }
 }

@@ -71,9 +71,7 @@ public class FourModesActivity extends AppCompatActivity {
         if (ggInfoBean == null) {
             ggInfoBean = MyApplicationContext.getInstance().getGgInforBean();
         }
-//        Vitamio.isInitialized(this);
         if (!LibsChecker.checkVitamioLibs(this)) {
-//            ToastUtil.showMessage(R.string.video_notfound_erro);
             return;
         }
         viewPager = (ViewPager) findViewById(R.id.recommend_viewPager);
@@ -91,7 +89,6 @@ public class FourModesActivity extends AppCompatActivity {
             }
         }
 
-//        initBannerView();
         selectModelByType();
         playButtomImage();
     }

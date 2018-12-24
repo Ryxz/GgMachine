@@ -14,23 +14,17 @@ public abstract class HttpCallBackImpl implements OKHttpUtils.HttpCallBack {
             if (success) {
                 JSONObject jsonObject = new JSONObject(response);
                 Object data;
-                Object other;
                 if (jsonObject.isNull("data")) {
                     data = "";
                 } else {
                     data = jsonObject.get("data");
                 }
 
-//                if (jsonObject.isNull("other")) {
-//                    other = "";
-//                } else {
-//                    other = jsonObject.get("other");
-//                }
-//                if (jsonObject.getBoolean("success")) {
+                if (jsonObject.getBoolean("success")) {
                     onRequestResult(true, jsonObject.getString("message"), data);
-//                } else {
-//                    onRequestResult(false, jsonObject.getString("message"), data, other);
-//                }
+                } else {
+                    onRequestResult(false, jsonObject.getString("message"), data);
+                }
             } else {
                 onRequestResult(false, response, null);
             }

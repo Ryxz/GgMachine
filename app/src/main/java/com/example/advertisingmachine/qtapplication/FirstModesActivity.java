@@ -41,7 +41,6 @@ public class FirstModesActivity  extends AppCompatActivity {
         final LayoutInflater inflater = LayoutInflater.from(this);
 
         if (!LibsChecker.checkVitamioLibs(this)) {
-//            ToastUtil.showMessage(R.string.video_notfound_erro);
             return;
         }
         if (ggInfoBean == null) {

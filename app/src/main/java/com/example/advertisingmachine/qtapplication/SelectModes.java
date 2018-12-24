@@ -82,8 +82,6 @@ public class SelectModes extends AppCompatActivity implements View.OnClickListen
 
                 MyApplicationContext.getInstance()
                         .isNetConnecting(GgInfoBean.DEVICE_ID_1);
-//                getDeviceId();
-//                L.e("整点报分：",Integer.toString(seconds));
                 L.e("date:",Long.toString(wholehour));
 
             }

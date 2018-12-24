@@ -22,7 +22,6 @@ import io.vov.vitamio.widget.VideoView;
 public class PlayVideoUtil {
     private static String videoUrl;
     private static int count = 0;
-//    private TextView loadrate;
     private static final String GG_BASEURL = "http://47.96.225.99/bill/public";
     public PlayVideoUtil() {
 
@@ -36,7 +35,6 @@ public class PlayVideoUtil {
      * @param mContext
      */
     public static void play(final VideoView view , final ProgressBar bar, GgInfoBean ggInfoBean,Context mContext) {
-//        final String videoUrl = null;
         final List<String> videoList = new ArrayList<>();
         final String videoData = ggInfoBean.getA_video();
         if (videoData != null) {

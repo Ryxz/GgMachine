@@ -39,24 +39,7 @@ public class ServerRequestUtil {
             L.d("TAG", "上传参数:" + params.toString());
             L.d("TAG", "请求路径:" + url);
         }
-//        OKHttpUtils.getInstance().post(url,params, new OKHttpUtils.MyOkHttpCallBack() {
-//            @Override
-//            public void onResponse(String json) {
-//                try {
-//                    JSONObject jsonObject = new JSONObject(json);
-//                    Object data;
-//                    Object message;
-//                    data = jsonObject.get("data");
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(int code) {
-//
-//            }
-//        });
+
         OKHttpUtils.getInstance().post(url, params, new HttpCallBackImpl() {
             @Override
             public void onRequestResult(boolean success, String message, Object data) {
@@ -64,9 +47,7 @@ public class ServerRequestUtil {
                 L.d("TAG", "回调数据:" + message + "---" + url);
                 L.d("TAG", "回调数据:" + data);
                 System.out.print("**************" + data);
-//                if (null != progressDialog) {
-//                    progressDialog.dismiss();
-//                }
+
                 if (success) {
                     serverResultListener.onSuccess(data.toString(),message);
                 } else {

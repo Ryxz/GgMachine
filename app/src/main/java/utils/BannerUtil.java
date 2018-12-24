@@ -24,7 +24,6 @@ public class BannerUtil {
     public static void BannerViewPlay(final AdPlayBanner banner, GgInfoBean ggInfoBean) {
         mDatas = new ArrayList<>();
         final List<String> ggList = ggInfoBean.getA_image2();
-//        String picData;
         if (ggList.size() > 0) {
             for (int i=0;i<ggList.size();i++) {
                 String picData = GG_BASEURL + ggList.get(i);
@@ -39,7 +38,7 @@ public class BannerUtil {
                 .setImageViewScaleType(CENTER_CROP)
                 .setIndicatorType(POINT_INDICATOR)
                 .setAutoPlay(true)
-                .setCanScroll(true)
+                .setCanScroll(false)
                 .setInterval(3000)
                 .setUp();
 

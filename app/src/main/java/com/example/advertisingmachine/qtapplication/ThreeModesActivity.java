@@ -23,7 +23,6 @@ import utils.ToastUtil;
 public class ThreeModesActivity extends AppCompatActivity {
     private VideoView videoView;
     private GgInfoBean ggInfoBean;
-    private static final String GG_BASEURL = "http://47.96.225.99/bill/public";
     private ProgressBar bar;
     private LinearLayout linearLayoutTop;
     private LinearLayout linearLayoutMid;
@@ -43,9 +42,7 @@ public class ThreeModesActivity extends AppCompatActivity {
         if (ggInfoBean == null) {
             ggInfoBean = MyApplicationContext.getInstance().getGgInforBean();
         }
-//        Vitamio.isInitialized(this);
         if (!LibsChecker.checkVitamioLibs(this)) {
-//            ToastUtil.showMessage(R.string.video_notfound_erro);
             return;
         }
         linearLayoutTop = (LinearLayout) findViewById(R.id.third_layout_top);
