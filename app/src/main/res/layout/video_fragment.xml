@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.advertisingmachine.qtapplication.StartActivity">
+    <RelativeLayout
+        android:id="@+id/video_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        >
+
+        <io.vov.vitamio.widget.VideoView
+            android:id="@+id/vitamio_videoview_v"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical" >
+            <!-- 加载视频师显示出来 -->
+            <ProgressBar
+                android:id="@+id/probar_first"
+                android:indeterminateDrawable="@drawable/refrensh_progressbar"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <!--<TextView-->
+                <!--android:id="@+id/load_rate_first"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:text="正在缓冲..." />-->
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
