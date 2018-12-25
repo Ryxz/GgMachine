@@ -35,6 +35,11 @@ public class ViewPageAdapter extends PagerAdapter {
         return view == object;
     }
 
+    /**
+     * 加载页面大小
+     * @param position
+     * @return
+     */
     @Override
     public float getPageWidth(int position) {
 //        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
