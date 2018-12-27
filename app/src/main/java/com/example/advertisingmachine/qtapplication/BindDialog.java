@@ -10,6 +10,9 @@ import android.widget.EditText;
 
 import com.example.administrator.qtapplication.R;
 
+/**
+ * 输入设备码的弹出框
+ */
 public class BindDialog extends Dialog implements View.OnClickListener {
     private Context mContext;
     private EditText editText;

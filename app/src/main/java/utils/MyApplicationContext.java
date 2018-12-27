@@ -38,8 +38,9 @@ public class MyApplicationContext extends Application {
     public void onCreate() {
         super.onCreate();
         myContext = this;
-        Vitamio.isInitialized(this);
         Fresco.initialize(this);
+        Vitamio.isInitialized(this);
+
 
     }
 

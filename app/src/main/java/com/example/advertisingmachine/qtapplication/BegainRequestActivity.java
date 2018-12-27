@@ -30,64 +30,72 @@ public class BegainRequestActivity extends AppCompatActivity {
         editText = (EditText) dialog.findViewById(R.id.et_mac);
     }
 
-
+    /**
+     * 弹出输入框
+     */
     private void doData() {
         dialog = new BindDialog(BegainRequestActivity.this, new BindDialog.LeaveLisenner() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.btn_bind:
-                         deviceId = editText.getText().toString();
-                        HttpRequest.getModeId(BegainRequestActivity.this, deviceId, new ServerResultListener() {
-                            @Override
-                            public void onSuccess(String json, String msg) {
-
-                                final String devId = json;
-
-                                HttpRequest.getGgInfo(BegainRequestActivity.this, deviceId, devId, new ServerResultListener() {
-                                    @Override
-                                    public void onSuccess(String json, String msg) {
-                                        if (json.equals("")) {
-                                            ToastUtil.showMessage("设备码错误，请重新输入");
-                                            dialog.clearEditText();
-                                        } else {
-                                            if (ggInfoBean == null) {
-                                                ggInfoBean = new GgInfoBean();
-                                                ggInfoBean = JsonUtil.parseJsonToBean(json, GgInfoBean.class);
-                                                MyApplicationContext.getInstance().saveGgInfoBean(ggInfoBean);
-                                                nextActivity(devId);
-                                            }
-                                        }
-
-                                    }
-
-                                    @Override
-                                    public void onFailure(String msg) {
-                                        ToastUtil.showMessage("获取模板信息失败");
-                                    }
-                                });
-
-
-                            }
-
-                            @Override
-                            public void onFailure(String msg) {
-                                ToastUtil.showMessage("获取广告信息失败");
-                            }
-                        });
-
+                         requestInfo();
                         break;
-                        case R.id.btn_cancel:
-                            MyApplicationContext.getInstance().clearBeanInfo();
-                            BegainRequestActivity.this.finish();
-                            dialog.dismiss();
-                            break;
+                    case R.id.btn_cancel:
+                        MyApplicationContext.getInstance().clearBeanInfo();
+                        BegainRequestActivity.this.finish();
+                        dialog.dismiss();
+                        break;
                         }
 
                 }
 
         });
         dialog.show();
+    }
+
+    /**
+     * 请求模板ID和广告信息
+     */
+    private void requestInfo() {
+        deviceId = editText.getText().toString();
+        HttpRequest.getModeId(BegainRequestActivity.this, deviceId, new ServerResultListener() {
+            @Override
+            public void onSuccess(String json, String msg) {
+
+                final String devId = json;
+
+                HttpRequest.getGgInfo(BegainRequestActivity.this, deviceId, devId, new ServerResultListener() {
+                    @Override
+                    public void onSuccess(String json, String msg) {
+                        if (json.equals("")) {
+                            ToastUtil.showMessage("设备码错误，请重新输入");
+                            dialog.clearEditText();
+                        } else {
+                            if (ggInfoBean == null) {
+                                ggInfoBean = new GgInfoBean();
+                                ggInfoBean = JsonUtil.parseJsonToBean(json, GgInfoBean.class);
+                                MyApplicationContext.getInstance().saveGgInfoBean(ggInfoBean);
+                                nextActivity(devId);
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(String msg) {
+                        ToastUtil.showMessage("获取模板信息失败");
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                ToastUtil.showMessage("获取广告信息失败");
+            }
+        });
     }
 
     public void nextActivity(String json) {
