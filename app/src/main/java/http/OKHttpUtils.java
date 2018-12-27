@@ -46,10 +46,10 @@ import utils.MD5Encrypt;
  */
 public class OKHttpUtils {
 
-    public static String TAG = "OKHttp";
+    private static String TAG = "OKHttp";
     private static final Map<String, String> headers = new HashMap<>();
 
-    public static MediaType JSONMediaType = MediaType.parse("application/json;charset=utf-8");
+    private static MediaType JSONMediaType = MediaType.parse("application/json;charset=utf-8");
 
     /**
      * 用来配置全局默认的提参数
@@ -120,7 +120,7 @@ public class OKHttpUtils {
      *
      * @return
      */
-    public static OKHttpUtils getInstance() {
+    static OKHttpUtils getInstance() {
         if (okHttpUtils == null) {
             okHttpUtils = new OKHttpUtils();
         }
@@ -130,13 +130,13 @@ public class OKHttpUtils {
 
     private Handler mHandler;
     private OkHttpClient mOkHttpClient;
-    public SharedPreferences memoryDataInfo;
+    private SharedPreferences memoryDataInfo;
 
     private OKHttpUtils() {
         mHandler = new Handler(Looper.getMainLooper());
     }
 
-    public OkHttpClient getOkHttpClient() {
+    private OkHttpClient getOkHttpClient() {
         if (mOkHttpClient == null) {
             mOkHttpClient = new OkHttpClient.Builder()
                     .connectTimeout(30, TimeUnit.MINUTES)
@@ -165,7 +165,7 @@ public class OKHttpUtils {
      * @param params
      * @param callback
      */
-    public void post(final String url, final Map<String, Object> params, final HttpCallBack callback) {
+    void post(final String url, final Map<String, Object> params, final HttpCallBack callback) {
         doRequest(url, new AsyncMakeParams() {
 
             @Override
@@ -357,7 +357,7 @@ public class OKHttpUtils {
      *
      * @param url
      */
-    public void doRequest(final String url, final AsyncMakeParams asyncMakeParams, final HttpCallBack callback, final boolean isCache, final boolean isDoRefresh, final boolean isGet, boolean isSynchronize, MediaType mediaType) {
+    private void doRequest(final String url, final AsyncMakeParams asyncMakeParams, final HttpCallBack callback, final boolean isCache, final boolean isDoRefresh, final boolean isGet, boolean isSynchronize, MediaType mediaType) {
         if (callback == null) {
             throw new RuntimeException("Callback must not null.");
         }
@@ -564,7 +564,7 @@ public class OKHttpUtils {
      * @param url
      * @param callback
      */
-    public void downFile(Context context, String url, String localPath, final HttpDownFileCallBack callback) {
+    private void downFile(Context context, String url, String localPath, final HttpDownFileCallBack callback) {
         if (localPath == null) {
             localPath = context.getFilesDir() + "/DownFiles/" + MD5Encrypt.MD5(url);
         }
@@ -671,7 +671,7 @@ public class OKHttpUtils {
      * @param params
      * @return
      */
-    public static String sign(Map<String, Object> params, String key){
+    private static String sign(Map<String, Object> params, String key){
         StringBuilder builder=new StringBuilder();
         TreeSet<String> paramKeys=new TreeSet(params.keySet());
 

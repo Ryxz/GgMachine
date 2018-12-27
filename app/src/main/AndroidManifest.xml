@@ -39,7 +39,7 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <activity android:name="com.example.advertisingmachine.qtapplication.SelectModes"/>
+        <activity android:name="com.example.advertisingmachine.qtapplication.BegainRequestActivity"/>
 
         <activity
             android:name="com.example.advertisingmachine.qtapplication.FirstModesActivity"
@@ -55,6 +55,7 @@
 
         <activity android:name="com.example.advertisingmachine.qtapplication.FourModesActivity"
             android:launchMode="singleTop"/>
+
     </application>
 
     <supports-screens

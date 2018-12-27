@@ -35,7 +35,7 @@ public class StartActivity extends Activity {
 
     public void getHome(){
         Intent intent = new Intent();
-        intent.setClass(StartActivity.this,SelectModes.class);
+        intent.setClass(StartActivity.this, BegainRequestActivity.class);
         startActivity(intent);
         finish();
     }

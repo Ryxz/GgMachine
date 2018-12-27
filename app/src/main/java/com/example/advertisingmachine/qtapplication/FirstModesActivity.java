@@ -9,19 +9,14 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.qtapplication.R;
-import com.ryane.banner.AdPageInfo;
 import com.ryane.banner.AdPlayBanner;
-
-import java.util.List;
 
 import bean.GgInfoBean;
 import io.vov.vitamio.LibsChecker;
-import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.VideoView;
 import utils.BannerUtil;
 import utils.MyApplicationContext;
 import utils.PlayVideoUtil;
-import utils.ToastUtil;
 
 
 public class FirstModesActivity  extends AppCompatActivity {
@@ -53,6 +48,7 @@ public class FirstModesActivity  extends AppCompatActivity {
 
         initView();
     }
+
 
     public void initView() {
         int type = ggInfoBean.getA_type();
