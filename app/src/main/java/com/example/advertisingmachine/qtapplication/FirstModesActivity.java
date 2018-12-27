@@ -49,7 +49,9 @@ public class FirstModesActivity  extends AppCompatActivity {
         initView();
     }
 
-
+    /**
+     * 根据type选择播放类型
+     */
     public void initView() {
         int type = ggInfoBean.getA_type();
         switch (type) {

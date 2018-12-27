@@ -93,6 +93,9 @@ public class FourModesActivity extends AppCompatActivity {
         playButtomImage();
     }
 
+    /**
+     * 根据服务器返回的type选择播放类型
+     */
     public void selectModelByType() {
         int type = ggInfoBean.getA_type();
         switch (type) {
@@ -110,6 +113,9 @@ public class FourModesActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 初始化图片播放，设置延迟播放
+     */
     private void playButtomImage() {
         viewPager.setAdapter(new ViewPageAdapter(picList,this));
         initDoc();
@@ -154,6 +160,9 @@ public class FourModesActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * activity销毁时，停止播放轮播图
+     */
     @Override
     protected void onDestroy() {
         if (adPlayBanner != null) {

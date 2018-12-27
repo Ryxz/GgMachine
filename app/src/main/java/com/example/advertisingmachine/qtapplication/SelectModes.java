@@ -21,6 +21,9 @@ import utils.L;
 import utils.MyApplicationContext;
 import utils.ToastUtil;
 
+/**
+ * 已失效
+ */
 public class SelectModes extends AppCompatActivity implements View.OnClickListener{
     private Button button1;
     private Button button2;
