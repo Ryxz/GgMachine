@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.example.advertisingmachine.qtapplication.BindDialog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.io.BufferedInputStream;
@@ -32,7 +33,7 @@ public class MyApplicationContext extends Application {
     public static MyApplicationContext myContext;
     private  GgInfoBean ggInfoBean;
     private static final String TAG = "MyApplicationContext";
-
+    private BindDialog dialog;
 
     @Override
     public void onCreate() {
@@ -176,7 +177,7 @@ public class MyApplicationContext extends Application {
         HttpRequest.getModeId(this, deviceId, new ServerResultListener() {
             @Override
             public void onSuccess(String json, String msg) {
-                L.e("Tag",msg);
+//                L.e("Tag",msg);
                 HttpRequest.getGgInfo(getInstance(),deviceId,json, new
                         ServerResultListener() {
                             @Override

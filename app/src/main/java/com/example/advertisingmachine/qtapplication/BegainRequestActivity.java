@@ -12,6 +12,7 @@ import com.example.administrator.qtapplication.R;
 import bean.GgInfoBean;
 import http.HttpRequest;
 import http.ServerResultListener;
+import service.LongRunningService;
 import utils.JsonUtil;
 import utils.MyApplicationContext;
 import utils.ToastUtil;
@@ -22,12 +23,13 @@ public class BegainRequestActivity extends AppCompatActivity {
     public static String deviceId;
     private EditText editText;
     private GgInfoBean ggInfoBean;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView();
         doData();
         editText = (EditText) dialog.findViewById(R.id.et_mac);
+        deviceId = editText.getText().toString();
     }
 
     /**
@@ -39,7 +41,13 @@ public class BegainRequestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.btn_bind:
-                         requestInfo();
+                        if (MyApplicationContext.isNetworkAvailable(BegainRequestActivity.this)){
+                            requestInfo();
+                            Intent intent = new Intent(BegainRequestActivity.this, LongRunningService.class);
+                            startService(intent);
+                        } else {
+                            ToastUtil.showMessage(R.string.not_connect_net);
+                        }
                         break;
                     case R.id.btn_cancel:
                         MyApplicationContext.getInstance().clearBeanInfo();
@@ -57,7 +65,8 @@ public class BegainRequestActivity extends AppCompatActivity {
     /**
      * 请求模板ID和广告信息
      */
-    private void requestInfo() {
+    public void requestInfo() {
+
         deviceId = editText.getText().toString();
         HttpRequest.getModeId(BegainRequestActivity.this, deviceId, new ServerResultListener() {
             @Override
@@ -98,6 +107,10 @@ public class BegainRequestActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * 根据服务器返回的json跳转不同模板
+     * @param json
+     */
     public void nextActivity(String json) {
         Intent intent = new Intent();
         switch (json) {
@@ -120,4 +133,9 @@ public class BegainRequestActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
 }
