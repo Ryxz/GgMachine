@@ -51,10 +51,6 @@ public class MyApplicationContext extends Application {
         return myContext;
     }
 
-//    public String getMacAddress() {
-//
-//    }
-
     /**
      * 保存缓存用户信息
      *

@@ -9,7 +9,6 @@ import android.os.SystemClock;
 
 import com.example.advertisingmachine.qtapplication.BegainRequestActivity;
 
-import io.vov.vitamio.utils.Log;
 import receiver.AlarmReceiver;
 import utils.MyApplicationContext;
 
@@ -19,7 +18,6 @@ public class LongRunningService extends Service {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.d("TAG",BegainRequestActivity.deviceId);
                 MyApplicationContext.getInstance().getData(BegainRequestActivity.deviceId);
             }
         }).start();
