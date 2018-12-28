@@ -1,8 +1,13 @@
 package com.example.advertisingmachine.qtapplication;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -27,9 +32,17 @@ public class BegainRequestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         doData();
         editText = (EditText) dialog.findViewById(R.id.et_mac);
         deviceId = editText.getText().toString();
+//        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+//            if (ContextCompat.checkSelfPermission(BegainRequestActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+//                //没有权限则申请权限
+//                ActivityCompat.requestPermissions(BegainRequestActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+//            }
+//        }
+
     }
 
     /**
@@ -85,8 +98,10 @@ public class BegainRequestActivity extends AppCompatActivity {
                                 ggInfoBean = new GgInfoBean();
                                 ggInfoBean = JsonUtil.parseJsonToBean(json, GgInfoBean.class);
                                 MyApplicationContext.getInstance().saveGgInfoBean(ggInfoBean);
-                                nextActivity(devId);
+//                                nextActivity(devId);
                             }
+
+                            nextActivity(devId);
                         }
 
                     }
@@ -132,6 +147,14 @@ public class BegainRequestActivity extends AppCompatActivity {
                 break;
         }
     }
+
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        if (dialog != null && !this.isFinishing()) {
+//            dialog.dismiss();
+//        }
+//    }
 
     @Override
     protected void onDestroy() {

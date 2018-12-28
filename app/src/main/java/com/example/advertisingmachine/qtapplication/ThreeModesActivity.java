@@ -9,16 +9,14 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.qtapplication.R;
-import com.ryane.banner.AdPlayBanner;
+import com.youth.banner.Banner;
 
 import bean.GgInfoBean;
 import io.vov.vitamio.LibsChecker;
-import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.VideoView;
 import utils.BannerUtil;
 import utils.MyApplicationContext;
 import utils.PlayVideoUtil;
-import utils.ToastUtil;
 
 public class ThreeModesActivity extends AppCompatActivity {
     private VideoView videoView;
@@ -30,8 +28,8 @@ public class ThreeModesActivity extends AppCompatActivity {
     private RelativeLayout layout_v;
     private LinearLayout layout_b;
     private LinearLayout layout_bo;
-    private AdPlayBanner banner1;
-    private AdPlayBanner banner2;
+    private Banner banner1;
+    private Banner banner2;
 
 
     @Override
@@ -58,8 +56,8 @@ public class ThreeModesActivity extends AppCompatActivity {
     }
 
     public void initVideoAndBanner() {
-        banner1 = (AdPlayBanner) findViewById(R.id.banner_view_bf);
-        banner2 = (AdPlayBanner) findViewById(R.id.banner_view_bf2);
+        banner1 = (Banner) findViewById(R.id.banner_view_bf);
+        banner2 = (Banner) findViewById(R.id.banner_view_bf2);
 
         videoView = (VideoView) findViewById(R.id.vitamio_videoview_v);
         bar = (ProgressBar) findViewById(R.id.probar_first);
@@ -93,8 +91,8 @@ public class ThreeModesActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         if (banner1 != null && banner2 != null) {
-            banner1.stop();
-            banner2.stop();
+            banner1.stopAutoPlay();
+            banner2.stopAutoPlay();
         }
         super.onDestroy();
     }

@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.qtapplication.R;
-import com.ryane.banner.AdPlayBanner;
+import com.youth.banner.Banner;
 
 import bean.GgInfoBean;
 import io.vov.vitamio.LibsChecker;
@@ -26,7 +26,7 @@ public class FirstModesActivity  extends AppCompatActivity {
     private LinearLayout linearLayoutBottom;
     private RelativeLayout layout_v;
     private LinearLayout layout_b;
-    private AdPlayBanner adPlayBanner;
+    private Banner banner;
     private VideoView videoView;
     private ProgressBar bar;
     @Override
@@ -60,18 +60,18 @@ public class FirstModesActivity  extends AppCompatActivity {
                 linearLayoutBottom.addView(layout_b);
                 videoView = (VideoView) findViewById(R.id.vitamio_videoview_v);
                 bar = (ProgressBar) findViewById(R.id.probar_first);
-                adPlayBanner = (AdPlayBanner) findViewById(R.id.banner_view_bf);
+                banner = (Banner) findViewById(R.id.banner_view_bf);
                 PlayVideoUtil.play(videoView, bar, ggInfoBean, this);
-                BannerUtil.BannerViewPlay(adPlayBanner,ggInfoBean);
+                BannerUtil.BannerViewPlay(banner,ggInfoBean);
                 break;
             case 1:
                 linearLayoutTop.addView(layout_b);
                 linearLayoutBottom.addView(layout_v);
                 videoView = (VideoView) findViewById(R.id.vitamio_videoview_v);
                 bar = (ProgressBar) findViewById(R.id.probar_first);
-                adPlayBanner = (AdPlayBanner) findViewById(R.id.banner_view_bf);
+                banner = (Banner) findViewById(R.id.banner_view_bf);
                 PlayVideoUtil.play(videoView, bar, ggInfoBean, this);
-                BannerUtil.BannerViewPlay(adPlayBanner,ggInfoBean);
+                BannerUtil.BannerViewPlay(banner,ggInfoBean);
                 break;
         }
     }
@@ -80,10 +80,10 @@ public class FirstModesActivity  extends AppCompatActivity {
     //销毁时停止banner播放
     @Override
     public void onDestroy() {
-        if (adPlayBanner != null) {
-            adPlayBanner.stop();
-        }
         super.onDestroy();
+        if (banner != null) {
+            banner.stopAutoPlay();
+        }
     }
 }
 

@@ -6,8 +6,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.example.advertisingmachine.qtapplication.BindDialog;
-import com.facebook.drawee.backends.pipeline.Fresco;
-
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,9 +37,7 @@ public class MyApplicationContext extends Application {
     public void onCreate() {
         super.onCreate();
         myContext = this;
-        Fresco.initialize(this);
         Vitamio.isInitialized(this);
-
 
     }
 

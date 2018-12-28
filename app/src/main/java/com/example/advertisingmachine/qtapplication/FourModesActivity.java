@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.qtapplication.R;
-import com.ryane.banner.AdPlayBanner;
+import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +22,14 @@ import java.util.List;
 import adapter.ViewPageAdapter;
 import bean.GgInfoBean;
 import io.vov.vitamio.LibsChecker;
-import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.VideoView;
 import utils.BannerUtil;
 import utils.MyApplicationContext;
 import utils.PlayVideoUtil;
-import utils.ToastUtil;
 
 
 public class FourModesActivity extends AppCompatActivity {
-    private AdPlayBanner adPlayBanner;
+    private Banner banner;
     private VideoView videoView;
     //BASE图片地址集合
     private List<String> ggList;
@@ -107,8 +105,8 @@ public class FourModesActivity extends AppCompatActivity {
                 break;
             case 1:
                 linearLayouttop.addView(layout_b);
-                adPlayBanner = (AdPlayBanner) findViewById(R.id.banner_view_bf);
-                BannerUtil.BannerViewPlay(adPlayBanner,ggInfoBean);
+                banner = (Banner) findViewById(R.id.banner_view_bf);
+                BannerUtil.BannerViewPlay(banner,ggInfoBean);
                 break;
         }
     }
@@ -165,8 +163,8 @@ public class FourModesActivity extends AppCompatActivity {
      */
     @Override
     protected void onDestroy() {
-        if (adPlayBanner != null) {
-            adPlayBanner.stop();
+        if (banner != null) {
+            banner.stopAutoPlay();
         }
         super.onDestroy();
     }

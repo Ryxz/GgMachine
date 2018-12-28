@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.GgInfoBean;
+import io.vov.vitamio.LibsChecker;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
@@ -23,9 +24,7 @@ public class PlayVideoUtil {
     private static String videoUrl;
     private static int count = 0;
     private static final String GG_BASEURL = "http://47.96.225.99/bill/public";
-    public PlayVideoUtil() {
 
-    }
 
     /**
      * 视频播放

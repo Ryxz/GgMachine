@@ -9,16 +9,14 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.qtapplication.R;
-import com.ryane.banner.AdPlayBanner;
+import com.youth.banner.Banner;
 
 import bean.GgInfoBean;
 import io.vov.vitamio.LibsChecker;
-import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.VideoView;
 import utils.BannerUtil;
 import utils.MyApplicationContext;
 import utils.PlayVideoUtil;
-import utils.ToastUtil;
 
 public class SecondModesActivity extends AppCompatActivity {
 
@@ -28,7 +26,7 @@ public class SecondModesActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
     private RelativeLayout layout_v;
     private LinearLayout layout_b;
-    private AdPlayBanner adPlayBanner;
+    private Banner banner;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +59,8 @@ public class SecondModesActivity extends AppCompatActivity {
                     break;
                 case 1:
                     linearLayout.addView(layout_b);
-                    adPlayBanner = (AdPlayBanner) findViewById(R.id.banner_view_bf);
-                    BannerUtil.BannerViewPlay(adPlayBanner,ggInfoBean);
+                    banner = (Banner) findViewById(R.id.banner_view_bf);
+                    BannerUtil.BannerViewPlay(banner,ggInfoBean);
                     break;
             }
         }
