@@ -14,6 +14,7 @@ import utils.MyApplicationContext;
 
 /**
  * 整点进行网络请求的service
+ * 添加网络判断
  */
 public class LongRunningService extends Service {
     @Override
