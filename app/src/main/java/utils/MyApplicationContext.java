@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.example.administrator.qtapplication.R;
 import com.example.advertisingmachine.qtapplication.BindDialog;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -137,6 +138,9 @@ public class MyApplicationContext extends Application {
         if (isNetworkAvailable(MyApplicationContext.getInstance())){
 //            getDeviceId(key,value,dAdvertId);
             getData(deviceId);
+        } else {
+            ToastUtil.showMessage(R.string.not_connect_net);
+            return;
         }
     }
     /**
@@ -163,6 +167,7 @@ public class MyApplicationContext extends Application {
 
     /**
      * 请求服务器获取数据
+     * 用以每小时重新请求服务器
      * @param deviceId
      */
     public void getData(final String deviceId) {

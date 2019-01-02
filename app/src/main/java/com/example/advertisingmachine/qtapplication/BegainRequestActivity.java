@@ -38,7 +38,7 @@ public class BegainRequestActivity extends AppCompatActivity {
         deviceId = editText.getText().toString();
 //        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
 //            if (ContextCompat.checkSelfPermission(BegainRequestActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-//                //没有权限则申请权限
+                //没有权限则申请权限
 //                ActivityCompat.requestPermissions(BegainRequestActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
 //            }
 //        }
@@ -54,12 +54,14 @@ public class BegainRequestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.btn_bind:
+//                        dialog.dismiss();
                         if (MyApplicationContext.isNetworkAvailable(BegainRequestActivity.this)){
                             requestInfo();
                             Intent intent = new Intent(BegainRequestActivity.this, LongRunningService.class);
                             startService(intent);
                         } else {
                             ToastUtil.showMessage(R.string.not_connect_net);
+                            return;
                         }
                         break;
                     case R.id.btn_cancel:
@@ -159,6 +161,9 @@ public class BegainRequestActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+//        if (dialog != null && !this.isFinishing()) {
+//            dialog.dismiss();
+//        }
 
     }
 }

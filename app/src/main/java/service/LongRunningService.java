@@ -18,7 +18,7 @@ public class LongRunningService extends Service {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                MyApplicationContext.getInstance().getData(BegainRequestActivity.deviceId);
+                MyApplicationContext.getInstance().isNetConnecting(BegainRequestActivity.deviceId);
             }
         }).start();
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
