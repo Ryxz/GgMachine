@@ -12,6 +12,9 @@ import com.example.advertisingmachine.qtapplication.BegainRequestActivity;
 import receiver.AlarmReceiver;
 import utils.MyApplicationContext;
 
+/**
+ * 整点进行网络请求的service
+ */
 public class LongRunningService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
